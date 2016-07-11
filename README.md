@@ -1,3 +1,6 @@
+# 说明
+upyun的文件夹上传功能
+
 # 安装 install
 npm install upyun
 
