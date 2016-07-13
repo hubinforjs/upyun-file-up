@@ -17,7 +17,8 @@ travel(fileConfig.localFile, (dir, file, pathname) => {
 		//  设置upyun 服务器里的目录结构
 		fileDb(dir, file).then(() => {
 			//  验证是文件是否要上传
-			upyun.putFile(remotePath+'/'+file, pathname, null, false, null, (err, result) => {
+			var = remotePathEnd = (remotePath+'/'+file).replace('//', '/')
+			upyun.putFile(remotePathEnd, null, false, null, (err, result) => {
 				if(err){
 					console.log(err)
 				}
@@ -35,7 +36,7 @@ travel(fileConfig.localFile, (dir, file, pathname) => {
 function changeRemotePath(dir) { // 设置线上地址，默认是本地地址，要替换地址变成线上的目录结构
 	var changeRemotePath = dir
 	if(fileConfig.remotePath){
-		var changeRemotePath = dir.replace(fileConfig.localFile, fileConfig.remotePath)
+		changeRemotePath = dir.replace(fileConfig.localFile, fileConfig.remotePath)
 	}
 	return new Promise((resolve) => {
 		resolve(changeRemotePath)
